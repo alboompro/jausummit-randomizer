@@ -102,13 +102,12 @@ const Roulette = () => {
         <img
           alt="logo"
           src="https://cdn.alboompro.com/630e19fcf935a50001279613_65284c94331d870001dbf5ee/original_size/jau_summit_branco-brilho-1.png?v=1"
-          style={{ marginBottom: '140px' }}
+          style={{ marginBottom: '76px' }}
         />
       </div>
 
       <ListContainer>
         {displayedList.map((item, index) => {
-          console.log(index)
           return <NameItem key={index} identification={index}>{item}</NameItem>
         }
         )}
