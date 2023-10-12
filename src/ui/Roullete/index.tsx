@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-import { Container, RaffleButton, NameItem, ListContainer } from "./styles";
+import {
+  Container,
+  RaffleButton,
+  NameItem,
+  ListContainer,
+  ConfettiImage,
+} from "./styles";
 
 const Roulette = () => {
   const [myList, setMyList] = useState([
@@ -35,21 +41,19 @@ const Roulette = () => {
     "String 29",
     "String 30",
   ]);
-  const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const [isAnimating, setIsAnimating] = useState<string>("false");
   const [startIndex] = useState<number>(0);
-  // const [displayedNewList, setDisplayedNewList] = useState<string[]>([]);
 
   const animateRoulette = () => {
-    if (isAnimating) {
+    if (isAnimating === "true") {
       return;
     }
 
     const animationDuration = 3000;
-    // const anamationTimeout = Math.floor(animationDuration / 3);
 
     let startTime: any;
 
-    setIsAnimating(true);
+    setIsAnimating("true");
 
     const shuffledList = myList.slice().sort(() => Math.random() - 0.5);
 
@@ -69,7 +73,6 @@ const Roulette = () => {
         const newList = [...shuffledList];
 
         for (let i = 0; i < position; i++) {
-          console.log(newList)
           const temp: string | undefined = newList.pop();
           if (temp) {
             newList.unshift(temp);
@@ -78,20 +81,22 @@ const Roulette = () => {
 
         setMyList(newList);
 
-        // Ajuste do progresso com base na desaceleração
         const adjustedProgress = progress * (1 + decelerationFactor);
 
         if (adjustedProgress <= 1) {
           requestAnimationFrame(animate);
         } else {
-          setIsAnimating(false);
+          setIsAnimating("false");
         }
       } else {
-        setIsAnimating(false);
+        setIsAnimating("false");
       }
     };
 
     requestAnimationFrame(animate);
+    setTimeout(() => {
+      setIsAnimating("finished");
+    }, 3200);
   };
 
   const displayedList = myList.slice(startIndex, startIndex + 5);
@@ -102,18 +107,28 @@ const Roulette = () => {
         <img
           alt="logo"
           src="https://cdn.alboompro.com/630e19fcf935a50001279613_65284c94331d870001dbf5ee/original_size/jau_summit_branco-brilho-1.png?v=1"
-          style={{ marginBottom: '140px' }}
+          style={{ marginBottom: "140px" }}
         />
       </div>
 
+      {isAnimating === "finished" && (
+        <ConfettiImage
+          alt="confetti"
+          src="https://cdn.alboompro.com/630e19fcf935a50001279613_65287a0b992e5b00010313bc/original_size/gif.gif?v=1"
+        />
+      )}
+
       <ListContainer>
         {displayedList.map((item, index) => {
-          return <NameItem key={index} identification={index}>{item}</NameItem>
-        }
-        )}
+          return (
+            <NameItem key={index} identification={index}>
+              {item}
+            </NameItem>
+          );
+        })}
       </ListContainer>
 
-      <RaffleButton onClick={animateRoulette} disabled={isAnimating}>
+      <RaffleButton onClick={animateRoulette} disabled={isAnimating === "true"}>
         sortear
       </RaffleButton>
     </Container>
