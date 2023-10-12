@@ -32,7 +32,7 @@ export const RaffleButton = styled.button`
 
   cursor: pointer;
 
-  margin-top: 46px;
+  margin-top: 99px;
 
   &:hover {
     background: #F91487;
