@@ -1,0 +1,14 @@
+:root {
+  line-height: 1.5;
+
+  background-image: url("https://cdn.alboompro.com/630e19fcf935a50001279613_65284dd7331d870001dbf5f7/original_size/background.jpg?v=1");
+  color: #FFFFFF;
+
+  margin: 0px;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
