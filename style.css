@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+*, body, html {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: 'Saira', sans-serif;
+  font-weight: 500;
+}
+
+
+#main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: url("https://cdn.alboompro.com/62e956f3d4cc770001d255b9_64d3d94a416ce70001599026/original_size/background-2.jpg?v=1");
+  background-size: cover;
+  background-position: center;
+}
+
+#logo {
+  width: 180px;
+
+}
+
+#winner {
+  font-size: 88px;
+  font-weight: 600;
+  /* margin-top: 98px; */
+  /* margin-bottom: 68px; */
+  color: #00D6BA;
+  padding: 98px 0 68px 0;
+}
+
+#button {
+  padding: 10px 60px;
+  border-radius: 3px;
+  border: none;
+  background: #EB077A;
+  box-shadow: 6px 5px 0px 0px #00D6BA;
+
+  font-size: 18px;
+  color: #FFF;
+  text-transform: uppercase;
+}
+
+#paragraph {
+  padding: 12px;
+  font-size: 14px;
+  color: rgba(244, 241, 244, 0.80);
+  position: relative;
+  top: 12vh;
+}
+
+
+
+
