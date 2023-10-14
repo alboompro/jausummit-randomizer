@@ -46,6 +46,12 @@
   font-size: 18px;
   color: #FFF;
   text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+#button:hover {
+  background: #F91487;
 }
 
 #paragraph {
