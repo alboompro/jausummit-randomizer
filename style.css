@@ -24,16 +24,20 @@
 
 #logo {
   width: 180px;
+  margin-bottom: 18px;
+}
 
+#winnerWrapper {
+  min-height: 336px;
+  max-height: 498px;
+  display: flex;
+  align-items: center;
 }
 
 #winner {
   font-size: 88px;
   font-weight: 600;
-  margin-top: 78px;
-  margin-bottom: 68px;
   color: #00D6BA;
-  /* padding: 98px 0 68px 0; */
 }
 
 #button {
