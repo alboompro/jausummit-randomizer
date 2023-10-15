@@ -32,6 +32,8 @@
   max-height: 498px;
   display: flex;
   align-items: center;
+  text-align: center;
+  position: relative;
 }
 
 #winner {
@@ -64,6 +66,12 @@
   color: rgba(244, 241, 244, 0.80);
   position: relative;
   top: 12vh;
+}
+
+#confetti {
+  position: absolute;
+  height: 100vh;
+  left: 72px;
 }
 
 
