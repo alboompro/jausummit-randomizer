@@ -32,6 +32,8 @@
   max-height: 498px;
   display: flex;
   align-items: center;
+  text-align: center;
+  position: relative;
 }
 
 #winner {
@@ -74,4 +76,10 @@
   text-transform: uppercase;
 
   margin: 150px 0 92px;
+}
+
+#confetti {
+  position: absolute;
+  height: 100vh;
+  left: 72px;
 }

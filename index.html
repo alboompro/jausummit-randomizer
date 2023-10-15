@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Jaú Summit Sorteador</title>
+  <title>Jaú Summit - Sorteador</title>
 </head>
 
 <body>
@@ -33,6 +33,7 @@
 <script>
   const button = document.querySelector('#button');
   const winner = document.querySelector('#winner');
+  const winnerWrapper = document.querySelector('#winnerWrapper');
   const allParticipants = document.querySelector('#allParticipants');
 
   const entrants = [
@@ -153,7 +154,7 @@
 
   allParticipants.textContent = entrants.length;
 
-  function randomName() {
+  const randomName = () => {
     const rand = Math.floor(Math.random() * entrants.length);
     const name = entrants[rand];
     if (name.length > 30) {
@@ -164,18 +165,8 @@
     winner.textContent = name;
   }
 
-  button.addEventListener('click', (e) => {
-    setDeceleratingTimeout(function () { randomName() }, 10, 40);
-
-    setTimeout(function () {
-      const winner = names.textContent;
-      winner.textContent = winner;
-    }, 10000);
-
-    e.preventDefault();
-  });
-
-  function setDeceleratingTimeout(callback, factor, times) {
+  
+  const setDeceleratingTimeout = (callback, factor, times) => {
     var internalCallback = function (t, counter) {
       return function () {
         if (--t > 0) {
@@ -184,11 +175,33 @@
         }
       }
     }(times, 0);
-
+    
     window.setTimeout(internalCallback, factor);
   };
 
-  console.log('acabou')
+  const timeOutCallBack = () => {
+    return function() {
+      winner.textContent = winner.innerText;
+      winnerWrapper.insertAdjacentHTML('beforeend', `<img src="assets/images/Celebration.gif" id="confetti" alt="celebration" />`)
+      setTimeout(function () {
+        isPlaying = false;
+        winnerWrapper.removeChild(winnerWrapper.lastChild);
+      }, 2500);
+    }
+  }
+
+  let isPlaying = false;
+
+  button.addEventListener('click', (e) => {
+    if (isPlaying) return;
+    isPlaying = true;
+    setDeceleratingTimeout(function () { randomName() }, 10, 40);
+
+    setTimeout(timeOutCallBack(), 10000); // 10 seconds
+
+    e.preventDefault();
+  });
+
 </script>
 
 </html>
