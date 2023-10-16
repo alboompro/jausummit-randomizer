@@ -31,177 +31,72 @@
 </body>
 
 <script>
-  const button = document.querySelector('#button');
-  const winner = document.querySelector('#winner');
-  const winnerWrapper = document.querySelector('#winnerWrapper');
-  const allParticipants = document.querySelector('#allParticipants');
+  const button = document.querySelector("#button");
+  const winner = document.querySelector("#winner");
+  const winnerWrapper = document.querySelector("#winnerWrapper");
+  const allParticipants = document.querySelector("#allParticipants");
 
-  const entrants = [
-  "Alice Silva Santos",
-  "Miguel Oliveira Costa",
-  "Sophia Pereira Souza",
-  "Arthur Santos Lima",
-  "Helena Ferreira Almeida",
-  "Bernardo Rodrigues Araújo uiwenbfuiwefwefuni",
-  "Valentina Martins Cardoso",
-  "Heitor Alves Vieira",
-  "Laura Gomes Ribeiro",
-  "Davi Barbosa Barbosa",
-  "Isabella Sousa Ferreira",
-  "Lorenzo Martins Pereira",
-  "Manuela Almeida Gonçalves",
-  "Théo Ferreira Ferreira",
-  "Melissa Lima Dias",
-  "Gabriel Ribeiro Gomes",
-  "Lucas Cardoso Rodrigues",
-  "Cecília Vieira Lopes",
-  "Matheus Lopes Martins",
-  "Luiza Gonçalves Barbosa",
-  "Benjamin Barbosa Almeida",
-  "Heloísa Pereira Pereira iownefiouwnefiweiof",
-  "Samuel Oliveira Lima",
-  "Lívia Costa Rodrigues",
-  "Enzo Santos Silva",
-  "Maria Clara Alves Cardoso",
-  "Nicolas Ferreira Gomes",
-  "Lorena Lopes Almeida",
-  "Guilherme Sousa Sousa",
-  "Luana Ribeiro Vieira",
-  "Rafaela Almeida Oliveira",
-  "João Pedro Ferreira Barbosa",
-  "Isabelly Vieira Rodrigues",
-  "Yuri Martins Costa",
-  "Pedro Lucas Lima",
-  "Ana Júlia Gonçalves Santos",
-  "Gustavo Gomes Pereira",
-  "Vitória Oliveira Almeida",
-  "Enzo Gabriel Rodrigues Alves",
-  "Larissa Cardoso Oliveira",
-  "João Gabriel Vieira Gomes",
-  "Bianca Almeida Sousa",
-  "Henry Ribeiro Lopes",
-  "Lara Ferreira Silva",
-  "Raul Lima Vieira",
-  "Júlia Almeida Almeida",
-  "Thiago Oliveira Sousa jqbnefuiwnuefwiuefuwif",
-  "Lorena Lopes Rodrigues",
-  "Danilo Martins Ferreira",
-  "Pietra Pereira Gomes",
-  "Gael Barbosa Lima",
-  "Bárbara Vieira Almeida",
-  "Luiz Felipe Ferreira Costa",
-  "Luna Almeida Oliveira",
-  "Bento Sousa Lopes",
-  "Lavínia Santos Pereira",
-  "Isaac Almeida Alves",
-  "Ayla Ribeiro Almeida",
-  "Benício Martins Pereira",
-  "Antonella Rodrigues Lopes",
-  "Eduardo Lima Barbosa",
-  "Sarah Costa Almeida",
-  "Miguel Ribeiro Rodrigues",
-  "Laís Oliveira Gomes",
-  "Lucas Gabriel Silva Almeida",
-  "Larissa Martins Alves",
-  "Levi Ferreira Costa",
-  "Clara Almeida Gomes",
-  "Francisco Sousa Pereira",
-  "Carolina Oliveira Lima nwefuiwefuwienfiw",
-  "Artur Lopes Oliveira",
-  "Isadora Vieira Barbosa",
-  "Lucca Gomes Silva",
-  "Antonella Santos Almeida",
-  "Yago Lima Lopes",
-  "Alícia Ferreira Alves",
-  "Daniel Rodrigues Barbosa",
-  "Marina Almeida Lima",
-  "Bryan Ribeiro Ribeiro",
-  "Lavínia Gomes Vieira",
-  "Alexandre Almeida Costa",
-  "Esther Pereira Santos",
-  "Pedro Henrique Lima Alves",
-  "Nina Almeida Oliveira",
-  "Davi Lucas Sousa",
-  "Liz Oliveira Gomes",
-  "Caio Martins Lima",
-  "Melissa Alves Almeida",
-  "Calebe Ribeiro Barbosa wenfwenfweioufnwueife",
-  "Liz Gomes Vieira",
-  "Heitor Lima Almeida",
-  "Isis Almeida Costa",
-  "Thomas Ferreira Pereira",
-  "Cecília Oliveira Ribeiro",
-  "Ian Alves Lopes",
-  "Malu Almeida Almeida jaenfjwenjfkwnejkfkwjefjkwef",
-  "Ismael Costa Sousa",
-  "Estela Lima Almeida",
-  "Davi Costa Gomes",
-  "Alana Vieira Vieira",
-  "Vicente Rodrigues Lima",
-  "Rafaela Almeida Alves",
-  "Henrique Almeida Pereira",
-  "Amanda Ribeiro Barbosa",
-  "Bruno Sousa Costa",
-  "Elisa Almeida Oliveira",
-  "Ryan Lima Lopes",
-  "Diana Gomes Almeida",
-  "Fernando Lima Silva",
-  "Lívia Vieira Vieira",
-  "Cauã Oliveira Pereira",
-  "Larissa Almeida Costa",
-  "Diego Barbosa Gomes",
-];
+  const storedNames = JSON.parse(localStorage.getItem("fullNames")) || [];
 
-  allParticipants.textContent = entrants.length;
+  console.log(storedNames);
+
+  allParticipants.textContent = storedNames.length;
 
   const randomName = () => {
-    const rand = Math.floor(Math.random() * entrants.length);
-    const name = entrants[rand];
+    const rand = Math.floor(Math.random() * storedNames.length);
+    const name = storedNames[rand];
     if (name.length > 30) {
-      winner.style.display = "flex"
-      winner.style.flexDirection = "column"
-      winner.style.textAlign = "center"
+      winner.style.display = "flex";
+      winner.style.flexDirection = "column";
+      winner.style.textAlign = "center";
     }
     winner.textContent = name;
-  }
+  };
 
-  
   const setDeceleratingTimeout = (callback, factor, times) => {
-    var internalCallback = function (t, counter) {
+    var internalCallback = (function (t, counter) {
       return function () {
         if (--t > 0) {
           window.setTimeout(internalCallback, ++counter * factor);
           callback();
         }
-      }
-    }(times, 0);
-    
+      };
+    })(times, 0);
+
     window.setTimeout(internalCallback, factor);
   };
 
   const timeOutCallBack = () => {
-    return function() {
+    return function () {
       winner.textContent = winner.innerText;
-      winnerWrapper.insertAdjacentHTML('beforeend', `<img src="assets/images/Celebration.gif" id="confetti" alt="celebration" />`)
+      winnerWrapper.insertAdjacentHTML(
+        "beforeend",
+        `<img src="assets/images/Celebration.gif" id="confetti" alt="celebration" />`
+      );
       setTimeout(function () {
         isPlaying = false;
         winnerWrapper.removeChild(winnerWrapper.lastChild);
       }, 2500);
-    }
-  }
+    };
+  };
 
   let isPlaying = false;
 
-  button.addEventListener('click', (e) => {
+  button.addEventListener("click", (e) => {
     if (isPlaying) return;
     isPlaying = true;
-    setDeceleratingTimeout(function () { randomName() }, 10, 40);
+    setDeceleratingTimeout(
+      function () {
+        randomName();
+      },
+      10,
+      40
+    );
 
     setTimeout(timeOutCallBack(), 10000); // 10 seconds
 
     e.preventDefault();
   });
-
 </script>
 
 </html>
