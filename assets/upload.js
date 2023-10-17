@@ -46,8 +46,9 @@ document.getElementById("fileInput").addEventListener("change", function () {
             fullName.push(fullNameStr);
           }
 
-          console.log('fullName', fullName);
+          localStorage.setItem('registrationNumber', JSON.stringify(registrationNumber));
           localStorage.setItem('fullNames', JSON.stringify(fullName));
+          debugger
           window.location.href = 'index.html';
         } else {
           console.error("Os arrays firstName e lastName não têm o mesmo comprimento.");

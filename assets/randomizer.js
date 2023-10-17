@@ -5,6 +5,7 @@ const allParticipants = document.querySelector("#allParticipants");
 const paragraph = document.querySelector("#paragraph");
 
 const storedNames = JSON.parse(localStorage.getItem("fullNames")) || [];
+const storedRegistrationNumber = JSON.parse(localStorage.getItem("registrationNumber")) || [];
 
 if (storedNames.length === 0) {
   winner.textContent = "Nenhum participante cadastrado";
@@ -23,7 +24,11 @@ const randomName = () => {
     winner.style.flexDirection = "column";
     winner.style.textAlign = "center";
   }
+
+  winner.style.textTransform = "capitalize"
+
   winner.textContent = name;
+  registration.textContent = storedRegistrationNumber[rand];
 };
 
 const setDeceleratingTimeout = (callback, times) => {
@@ -65,7 +70,7 @@ button.addEventListener("click", (e) => {
     150
   );
 
-  setTimeout(timeOutCallBack(), 1000);
+  setTimeout(timeOutCallBack(), 400);
 
   e.preventDefault();
 });
