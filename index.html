@@ -23,7 +23,7 @@
       <button id="button">Sortear Agora</button>
     </div>
 
-    <p id="paragraph">São <span id="allParticipants"></span> pessoas participando do sorteio. A pessoa sorteada tem que
+    <p id="paragraph">São<span id="allParticipants"></span> pessoas participando do sorteio. A pessoa sorteada tem que
       estar presente no evento para
       ganhar o prêmio.
     </p>
@@ -45,7 +45,8 @@
     paragraph.style.display = "none";
   }
 
-  allParticipants.textContent = storedNames.length ;
+  allParticipants.textContent = storedNames.length;
+  allParticipants.style.margin = "0 4px";
 
   const randomName = () => {
     const rand = Math.floor(Math.random() * storedNames.length);
@@ -58,17 +59,17 @@
     winner.textContent = name;
   };
 
-  const setDeceleratingTimeout = (callback, factor, times) => {
-    var internalCallback = (function (t, counter) {
+  const setDeceleratingTimeout = (callback, times) => {
+    var internalCallback = (function (t) {
       return function () {
         if (--t > 0) {
-          window.setTimeout(internalCallback, ++counter * factor);
+          window.setTimeout(internalCallback);
           callback();
         }
       };
     })(times, 0);
 
-    window.setTimeout(internalCallback, factor);
+    window.setTimeout(internalCallback);
   };
 
   const timeOutCallBack = () => {
@@ -81,7 +82,7 @@
       setTimeout(function () {
         isPlaying = false;
         winnerWrapper.removeChild(winnerWrapper.lastChild);
-      }, 2500);
+      }, 5000);
     };
   };
 
@@ -94,11 +95,10 @@
       function () {
         randomName();
       },
-      10,
-      40
+      150
     );
 
-    setTimeout(timeOutCallBack(), 10000); // 10 seconds
+    setTimeout(timeOutCallBack(), 1000);
 
     e.preventDefault();
   });
