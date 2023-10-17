@@ -1,3 +1,7 @@
+const registrationNumber = []
+const firstName = []
+const lastName = []
+
 document.getElementById("fileInput").addEventListener("change", function () {
   const fileInput = document.getElementById("fileInput");
   const file = fileInput.files[0];
@@ -21,7 +25,33 @@ document.getElementById("fileInput").addEventListener("change", function () {
           }
         }
 
-        console.log("Nomes extraídos do CSV:", names);
+        const sliceNames = names.slice(1);
+        
+        sliceNames.forEach((partcipants, index) => {
+
+          const splitComma = partcipants.split(',')
+
+          registrationNumber.push(splitComma[0])
+          firstName.push(splitComma[1])
+          lastName.push(splitComma[2])
+        });
+
+        if (firstName.length === lastName.length) {
+          const fullName = [];
+        
+          for (let i = 0; i < firstName.length; i++) {
+            const trimmedFirstName = firstName[i].trim();
+            const trimmedLastName = lastName[i].trim();
+            const fullNameStr = `${trimmedFirstName} ${trimmedLastName}`;
+            fullName.push(fullNameStr);
+          }
+
+          console.log('fullName', fullName);
+          localStorage.setItem('fullNames', JSON.stringify(fullName));
+          window.location.href = 'index.html';
+        } else {
+          console.error("Os arrays firstName e lastName não têm o mesmo comprimento.");
+        }
       };
 
       reader.readAsText(file);
