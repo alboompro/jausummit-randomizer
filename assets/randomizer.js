@@ -3,6 +3,7 @@ const winner = document.querySelector("#winner");
 const winnerWrapper = document.querySelector("#winnerWrapper");
 const allParticipants = document.querySelector("#allParticipants");
 const paragraph = document.querySelector("#paragraph");
+const imgConfetti = document.querySelector("#confetti");
 
 const storedNames = JSON.parse(localStorage.getItem("fullNames")) || [];
 const storedRegistrationNumber = JSON.parse(localStorage.getItem("registrationNumber")) || [];
@@ -35,7 +36,7 @@ const setDeceleratingTimeout = (callback, times) => {
   var internalCallback = (function (t) {
     return function () {
       if (--t > 0) {
-        window.setTimeout(internalCallback);
+        window.setTimeout(internalCallback, 60);
         callback();
       }
     };
@@ -47,13 +48,12 @@ const setDeceleratingTimeout = (callback, times) => {
 const timeOutCallBack = () => {
   return function () {
     winner.textContent = winner.innerText;
-    winnerWrapper.insertAdjacentHTML(
-      "beforeend",
-      `<img src="assets/images/Celebration.gif" id="confetti" alt="celebration" />`
-    );
+    imgConfetti.style.display = "block";
+    imgConfetti.setAttribute("src", "assets/images/Celebration.gif");
     setTimeout(function () {
       isPlaying = false;
-      winnerWrapper.removeChild(winnerWrapper.lastChild);
+      imgConfetti.setAttribute("src", "");
+      imgConfetti.style.display = "none";
     }, 5000);
   };
 };
@@ -67,10 +67,10 @@ button.addEventListener("click", (e) => {
     function () {
       randomName();
     },
-    150
+    30
   );
 
-  setTimeout(timeOutCallBack(), 400);
+  setTimeout(timeOutCallBack(), 1570);
 
   e.preventDefault();
 });
