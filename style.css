@@ -54,7 +54,6 @@ html {
   color: #00D6BA;
   line-height: 110px;
   margin-bottom: 16px;
-  /* text-transform: capitalize; */
 }
 
 #button {
@@ -67,7 +66,7 @@ html {
   font-size: 20px;
   color: #FFF;
   text-transform: uppercase;
-
+  border: none;
   cursor: pointer;
 }
 
