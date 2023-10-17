@@ -64,8 +64,10 @@
   padding: 12px;
   font-size: 14px;
   color: rgba(244, 241, 244, 0.80);
-  position: relative;
-  top: 12vh;
+  height: 100%;
+  display: flex;
+  align-items: end;
+  margin-bottom: 12px;
 }
 
 #upload-phrase {
