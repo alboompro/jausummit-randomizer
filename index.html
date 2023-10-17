@@ -35,12 +35,17 @@
   const winner = document.querySelector("#winner");
   const winnerWrapper = document.querySelector("#winnerWrapper");
   const allParticipants = document.querySelector("#allParticipants");
+  const paragraph = document.querySelector("#paragraph");
 
   const storedNames = JSON.parse(localStorage.getItem("fullNames")) || [];
 
-  console.log(storedNames);
+  if (storedNames.length === 0) {
+    winner.textContent = "Nenhum participante cadastrado";
+    button.style.display = "none";
+    paragraph.style.display = "none";
+  }
 
-  allParticipants.textContent = storedNames.length;
+  allParticipants.textContent = storedNames.length ;
 
   const randomName = () => {
     const rand = Math.floor(Math.random() * storedNames.length);
