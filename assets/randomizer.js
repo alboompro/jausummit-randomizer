@@ -16,7 +16,7 @@ let isPlaying = false; // Flag para verificar se o sorteio está em andamento
 
 // Função assíncrona para buscar nomes a partir de uma planilha Google Sheets
 const getAllNames = async () => {
-  const res = await fetch("", {
+  const res = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vS6c0coxJlTiD0iSMrFtjdc1AxEOOV8vFbvkjJUn4ao2Ktg4eUxQcGp422pm-tgclp3z837jlOgbL4j/pub?gid=0&single=true&output=csv", {
     method: 'GET',
     headers: {
       'Content-Type': 'text/csv;charset=UTF-8'
@@ -134,4 +134,18 @@ button.addEventListener("click", (e) => {
   e.preventDefault();
 });
 
-// Listener para eventos de
+// Listener para eventos de teclado (PageDown e PageUp) para ativar o sorteio e cancelar
+document.addEventListener("keydown", function (event) {
+  if (event.code === "PageDown" || event.code === "PageUp") {
+    button.click();
+    if (isPlaying === true) {
+      isPlaying = false;
+      imgConfetti.setAttribute("src", "");
+      imgConfetti.style.display = "none";
+      window.clearTimeout(callback);
+    }
+  }
+});
+
+// Inicializa o processo obtendo todos os nomes da planilha
+getAllNames();
