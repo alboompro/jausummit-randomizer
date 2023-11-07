@@ -16,7 +16,7 @@ let isPlaying = false; // Flag para verificar se o sorteio está em andamento
 
 // Função assíncrona para buscar nomes a partir de uma planilha Google Sheets
 const getAllNames = async () => {
-  const res = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vS6c0coxJlTiD0iSMrFtjdc1AxEOOV8vFbvkjJUn4ao2Ktg4eUxQcGp422pm-tgclp3z837jlOgbL4j/pub?gid=0&single=true&output=csv", {
+  const res = await fetch("", {
     method: 'GET',
     headers: {
       'Content-Type': 'text/csv;charset=UTF-8'
