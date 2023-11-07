@@ -26,8 +26,16 @@ Este projeto utiliza CSS para estilizar a interface do sorteio. Você pode perso
 Este projeto é open-source, e você é bem-vindo(a) a contribuir para aprimorar o código ou adicionar novas funcionalidades. Sinta-se à vontade para fazer um fork deste repositório e enviar suas contribuições por meio de pull requests.
 
 ## Créditos
-Desenvolvido por [Seu Nome ou Nome da Equipe] - Adicione o seu nome ou o nome da equipe aqui.
-Licença
+Desenvolvido por:
+
+### Desenvolvedores:
+[João Pedro](https://www.linkedin.com/in/joa7b/)
+[João Heron](https://github.com/JoaoVictorHeron)
+
+### UX/UI
+[Fernando Araújo](https://www.linkedin.com/in/araujofer/) .
+
+## Licença
 Este projeto é distribuído sob a Licença MIT. Consulte o arquivo LICENSE para obter detalhes.
 
 Divirta-se usando o Sorteador de Participantes do Jaú Summit! Se tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato conosco.
