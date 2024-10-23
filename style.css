@@ -7,8 +7,8 @@ html {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  font-family: 'Saira', sans-serif;
-  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
 
 
@@ -18,13 +18,13 @@ html {
   align-items: center;
   width: 100%;
   height: 100vh;
-  background: url("https://cdn.alboompro.com/62e956f3d4cc770001d255b9_64d3d94a416ce70001599026/original_size/background-2.jpg?v=1");
+  background: url("https://cdn.alboompro.com/5e1629425af36b0001effcfc_6718f27d5f81700001127792/original_size/bg-jau-summit.jpg?v=1");
   background-size: cover;
   background-position: center;
 }
 
 #logo {
-  width: 180px;
+  width: 300px;
   margin-top: 122px;
   margin-bottom: 18px;
 }
@@ -51,7 +51,7 @@ html {
 #winner {
   font-size: 88px;
   font-weight: 600;
-  color: #00D6BA;
+  color: #00dda8;
   line-height: 110px;
   margin-bottom: 16px;
 }
@@ -61,7 +61,7 @@ html {
   border-radius: 3px;
   border: none;
   background: #EB077A;
-  box-shadow: 6px 5px 0px 0px #00D6BA;
+  box-shadow: 6px 5px 0px 0px #00dda8;
 
   font-size: 20px;
   color: #FFF;
